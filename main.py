@@ -25,3 +25,18 @@ class Function:
     def hello(self):
         print('world')
 
+
+# It has its own web server.
+# Might be flask?
+
+
+def main():
+    """
+    The entrypoint ...
+    """
+    pass
+
+
+if __name__ == "__main__":
+    main()
+    
