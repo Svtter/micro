@@ -1,8 +1,14 @@
 # Micro
 
+> current_status: prototype.
+
 ... Python microservice framework.
 
-current_status: prototype.
+More in [Document](./docs/docs/index.md). You should clone this project and run `inv docs`.
+
+## Install
+
+Not now.
 
 ## Features
 
