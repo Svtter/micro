@@ -9,9 +9,6 @@ from .exceptions import AppException
 
 class App:
     def __init__(self) -> None:
-        # load from configfile?
-        self.inner_app = Flask(__name__)
-
         # service_name, service
         self.service_dict = {}
 
