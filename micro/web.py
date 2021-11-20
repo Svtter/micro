@@ -17,6 +17,4 @@ class App:
         self.inner_app.run()
 
 
-
-
 app = App()

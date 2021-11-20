@@ -12,6 +12,20 @@ from micro.service import BaseService
 
 # Use core_app ... to make debug avaliable.
 from micro.web import app
+import logging
+
+
+def obtain_logger():
+    logger = logging.getLogger('micro.main')
+    logger.setLevel(logging.DEBUG)
+    log_formatter = logging.Formatter(fmt=' %(name)s :: %(levelname)-8s :: %(message)s')
+    handler = logging.StreamHandler()
+    handler.setFormatter(log_formatter)
+    logger.addHandler(handler)
+    return logger
+
+
+logger = obtain_logger()
 
 
 class Service(BaseService):
@@ -32,7 +46,7 @@ class Functions:
     # like .. get('workService').api('/hello')
     @service.api('/hello', name='hello')
     def hello(self):
-        print('world')
+        logger.info("I'm ..., I've being called!")
         return {'hello': 'world'}
 
 
@@ -52,7 +66,7 @@ def main():
     f = Functions()
 
     # This call should be in service.
-    f.hello()
+    logger.info(f.hello())
 
 
 if __name__ == "__main__":
