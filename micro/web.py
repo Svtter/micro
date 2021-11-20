@@ -15,11 +15,17 @@ class App:
         # service_name, app
         self.app_dict = {}
 
-    def set_core(self):
+    def set_web_core(self):
         # The core should be changable.
         pass
 
+    def get_web_core(self, service_name) -> Flask:
+        return Flask(service_name)
+
     def get_app(self, name) -> Flask:
+        """
+        注册之后，用户可以通过 get_app 来获取已经注册服务的 app
+        """
         # Please make sure app exist.
         if not self.app_dict[name]:
             raise AppException(f'No such serivce-{name}. We have {self.app_dict.keys()}')
@@ -33,7 +39,7 @@ class App:
         if self.service_dict.get(service.name):
             raise AppException(f"The {service.name} has been registerd.")
         self.service_dict[service.name] = service
-        self.app_dict[service.name] = Flask(service.name)
+        self.app_dict[service.name] = self.get_web_core(service_name=service.name)
 
         # When start app, check the service status
         service.is_registered = True
