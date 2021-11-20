@@ -1,4 +1,4 @@
-import bidict
+from bidict import bidict
 from typing import Callable
 
 

@@ -11,7 +11,7 @@
 from micro.service import BaseService
 
 # Use core_app ... to make debug avaliable.
-from micro.core import core_app
+from micro.web import app
 
 
 class Service(BaseService):
@@ -43,7 +43,7 @@ def main():
     """
     The entrypoint ...
     """
-    pass
+    app.run()
 
 
 if __name__ == "__main__":

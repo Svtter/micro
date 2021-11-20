@@ -1,0 +1,8 @@
+# test tools
+pytest
+pytest-xdist
+pytest-sugar
+
+# format tools
+black
+autopep8
