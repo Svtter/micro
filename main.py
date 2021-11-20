@@ -7,42 +7,14 @@
 可以继承一个新的类，来生成 views 所需要的参数。
 """
 
-from typing import Callable
-import bidict
-
-
-class Router:
-    def __init__(self) -> None:
-        self.url_dict = {}
-        self.name_dict = {}
-        self.url_name = bidict({})
-
-    def set_url(self, path: str, name: str, func: Callable):
-        self.url_dict[path] = func
-        self.name_dict[name] = func
-        self.url_name[path] = name
-
-    def get_func_by_name(self, name: str) -> Callable:
-        return self.name_dict[name]
-
-    def get_func(self, path: str) -> Callable:
-        return self.url_dict[path]
-
-
-class BaseService:
-    def __init__(self) -> None:
-        self.router = Router()
-
-    def api(self, path: str, name: str):
-        """
-        set url
-        """
-        def wrapper(func):
-            self.router.set_url(path, name, func)
-        return wrapper
+from micro.service import BaseService
 
 
 class Service(BaseService):
+    """
+    evert time a service was defined, 
+    it should be added to a service list.
+    """
     name = 'WorkSerivce'
 
 service = Service()
