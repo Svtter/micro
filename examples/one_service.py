@@ -12,6 +12,7 @@ from micro.service import BaseService
 
 # Use core_app ... to make debug avaliable.
 from micro.web import app
+from micro.client import Client
 import logging
 
 
@@ -30,10 +31,10 @@ logger = obtain_logger()
 
 class Service(BaseService):
     """
-    evert time a service was defined, 
+    every time a service was defined, 
     it should be added to a service list.
     """
-    name = 'WorkSerivce'
+    name = 'WorkService'
 
 
 # Is this must be ...?
@@ -42,6 +43,10 @@ service = Service()
 
 # The name of this is function?
 class Functions:
+    def __init__(self, client) -> None:
+        # Give a client to let service know who is calling.
+        self.client = client
+
     # Or use another way
     # like .. get('workService').api('/hello')
     @service.api('/hello', name='hello')
@@ -61,9 +66,13 @@ def main():
 
     # The app could be start by others ..?
     # app.run()
+    app.register_service(service=service)
+    service_app = app.get_app('WorkService')
+    service_app.run()
 
     # make call
-    f = Functions()
+    c = Client()
+    f = Functions(c)
 
     # This call should be in service.
     logger.info(f.hello())

@@ -5,6 +5,8 @@ from typing import Callable
 
 
 class BaseService:
+    name = "default"
+
     def __init__(self) -> None:
         """
         router is what we serve.
@@ -12,6 +14,7 @@ class BaseService:
         """
         self.router = Router()
         self.client = Client()
+        self.is_registered = False
 
     def api(self, path: str, name: str) -> Callable:
         """
