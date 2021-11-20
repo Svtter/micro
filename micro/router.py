@@ -1,4 +1,5 @@
 import bidict
+from typing import Callable
 
 
 class Router:
