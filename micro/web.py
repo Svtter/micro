@@ -16,5 +16,12 @@ class App:
     def run(self):
         self.inner_app.run()
 
+    def get_service(self, name: str='default'):
+        """
+        not finished yet.
+        """
+        # there should be a service register.
+        pass
+
 
 app = App()
