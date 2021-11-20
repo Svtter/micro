@@ -9,12 +9,14 @@ class App:
         # load from configfile?
         self.inner_app = Flask(__name__)
 
+    def set_core(self):
+        # The core should be changable.
+        pass
+
     def run(self):
         self.inner_app.run()
 
 
-def set_core():
-    pass
 
 
 app = App()

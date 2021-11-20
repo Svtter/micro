@@ -13,6 +13,9 @@ class BaseService:
         TODO: missing a wrapper
         """
         def wrapper(func):
-            self.router.set_url(path, name, func)
+            def wrapped_func(*args, **kwargs):
+                return func(*args, **kwargs)
+            self.router.set_url(path, name, wrapped_func)
+            return wrapped_func
         return wrapper
 

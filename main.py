@@ -27,12 +27,13 @@ service = Service()
 
 
 # The name of this is function?
-class Function:
+class Functions:
     # Or use another way
     # like .. get('workService').api('/hello')
     @service.api('/hello', name='hello')
     def hello(self):
         print('world')
+        return {'hello': 'world'}
 
 
 # It has its own web server.
@@ -43,7 +44,15 @@ def main():
     """
     The entrypoint ...
     """
-    app.run()
+
+    # The app could be start by others ..?
+    # app.run()
+
+    # make call
+    f = Functions()
+
+    # This call should be in service.
+    f.hello()
 
 
 if __name__ == "__main__":
