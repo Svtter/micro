@@ -77,6 +77,7 @@ def main():
     f = Functions(c)
 
     # This call should be in service.
+    # 直接调用是不可取的，容易产生依赖。我们应该采用其他的方法。
     logger.info(f.hello())
 
 
