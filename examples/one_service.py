@@ -42,7 +42,7 @@ service = Service()
 
 
 # The name of this is function?
-class Functions:
+class ViewFunctions:
     def __init__(self, client) -> None:
         # Give a client to let service know who is calling.
         self.client = client
@@ -59,6 +59,20 @@ class Functions:
 # Might be flask?
 
 
+# Client
+# As a user ... what do I want ?
+# 这个调用应该是跨过不同的 server 和不同的 host
+class WorkClient(Client):
+    """
+    I am writing this client...
+    To test the service.
+    To let another service use this client to call
+    """
+    def make_hello(self):
+        service = self.get_service()
+        pass
+
+
 def main():
     """
     The entrypoint ...
@@ -73,8 +87,8 @@ def main():
     # make call
     # TODO[question]: 服务的调度，应该是可以自动补全的，还是不能自动补全的呢？
     # 运行时提醒？还是编码时提醒？
-    c = Client()
-    f = Functions(c)
+    c = WorkClient()
+    f = ViewFunctions(c)
 
     # This call should be in service.
     # 直接调用是不可取的，容易产生依赖。我们应该采用其他的方法。

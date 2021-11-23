@@ -7,4 +7,9 @@ class Client:
     """
     通过 TDD 的方式，允许自己编写 SDK
     """
-    pass
+
+    def __init__(self) -> None:
+        self.service = None
+
+    def get_service(self, name):
+        return None
