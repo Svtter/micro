@@ -1,5 +1,4 @@
 from .router import Router
-from .client import Client
 
 from typing import Callable
 
@@ -13,7 +12,6 @@ class BaseService:
         client is what we make a call.
         """
         self.router = Router()
-        self.client = Client()
         self.is_registered = False
 
     def api(self, path: str, name: str) -> Callable:
@@ -32,3 +30,6 @@ class BaseService:
     def get_api_func(self):
         return self.api
 
+
+def api(url: str, name: str):
+    pass
