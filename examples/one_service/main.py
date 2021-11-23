@@ -34,8 +34,11 @@ def main():
 
     # The app could be start by others ..?
     # app.run()
-    app.register_service(service=service)
-    service_app = app.get_app('WorkService')
+    from conf import Conf
+    work_service_cls = Conf.service_list[0]
+    work_service = work_service_cls()
+    app.register_service(service=work_service)
+    service_app = app.get_app(work_service.name)
     service_app.run()
 
 

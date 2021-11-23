@@ -11,10 +11,10 @@ from .logger import logger
 
 # The name of this is function?
 class ViewFunctions:
+    router = router
     def __init__(self, client) -> None:
         # Give a client to let service know who is calling.
         self.client = client
-        self.router = router
 
     # Or use another way
     # like .. get('workService').api('/hello')

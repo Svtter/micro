@@ -2,6 +2,7 @@ import pathlib
 
 BASE_DIR = pathlib.Path(__file__).parent
 
+# Way 1
 # Django import style.
 # Or use class ..?
 service_list = [
@@ -19,3 +20,10 @@ service_list = [
 通过类加载 workService；
 使用对应的类初始化
 """
+
+# Way 3
+
+class Conf:
+    service_list = [WorkSerivce]
+
+    
