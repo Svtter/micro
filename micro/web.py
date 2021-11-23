@@ -7,6 +7,7 @@ from micro.service import BaseService
 from .exceptions import AppException
 
 
+# Like Service registry
 class App:
     def __init__(self) -> None:
         # service_name, service
