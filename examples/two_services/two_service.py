@@ -27,7 +27,7 @@ service = ServiceA()
 
 
 # The name of this is function?
-class Functions:
+class ViewFunctions:
     # Or use another way
     # like .. get('workService').api('/hello')
     @service.api('/hello', name='hello')
