@@ -14,3 +14,8 @@ from work_service.service import Service as WorkSerivce
 service_list = [
     WorkSerivce,
 ]
+
+"""
+通过类加载 workService；
+使用对应的类初始化
+"""

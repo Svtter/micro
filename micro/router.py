@@ -1,21 +1,28 @@
-from bidict import bidict
+from .core.router import RouterDict
 from typing import Callable
 
 
 class Router:
     def __init__(self) -> None:
-        self.url_dict = {}
-        self.name_dict = {}
-        self.url_name = bidict({})
+        """
+        router is what we serve.
+        client is what we make a call.
+        """
+        self.router_dict = RouterDict()
+        self.is_registered = False
 
-    def set_url(self, path: str, name: str, func: Callable):
-        self.url_dict[path] = func
-        self.name_dict[name] = func
-        self.url_name[path] = name
+    def api(self, path: str, name: str) -> Callable:
+        """
+        set url
+        """
+        def wrapper(func):
+            def wrapped_func(*args, **kwargs):
+                resp = func(*args, **kwargs)
+                assert isinstance(resp, dict), 'The service function should return dict'
+                return resp
+            self.router_dict.set_url(path, name, wrapped_func)
+            return wrapped_func
+        return wrapper
 
-    def get_func_by_name(self, name: str) -> Callable:
-        return self.name_dict[name]
-
-    def get_func(self, path: str) -> Callable:
-        return self.url_dict[path]
-
+    def get_api_func(self):
+        return self.api
