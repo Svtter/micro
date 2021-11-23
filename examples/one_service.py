@@ -69,8 +69,8 @@ class WorkClient(Client):
     To let another service use this client to call
     """
     def make_hello(self):
-        service = self.get_service()
-        pass
+        service = self.get_service('workService')
+
 
 
 def main():
