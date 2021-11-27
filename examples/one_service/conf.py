@@ -1,4 +1,6 @@
 import pathlib
+from typing import List, Type
+from micro.service import BaseService
 
 BASE_DIR = pathlib.Path(__file__).parent
 
@@ -11,7 +13,7 @@ service_list = [
 
 
 # Way 2 
-from work_service.service import Service as WorkSerivce
+from .work_service.service import Service as WorkSerivce
 service_list = [
     WorkSerivce,
 ]
@@ -24,6 +26,8 @@ service_list = [
 # Way 3
 
 class Conf:
-    service_list = [WorkSerivce]
+    service_list: List[Type[BaseService]] = [
+        WorkSerivce
+    ]
 
     

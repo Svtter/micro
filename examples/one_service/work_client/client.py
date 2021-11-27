@@ -17,5 +17,11 @@ class WorkClient(Client):
     To test the service.
     To let another service use this client to call
     """
-    def make_hello(self):
-        service = self.get_service('workService')
+    def __init__(self, service_name) -> None:
+        # workService 在运行之前应该被检查
+        self.service_name = 'WorkService'
+        super().__init__(service_name)
+
+    def make_hello(self) -> dict:
+        # 手写，为后续的调用者提供便利
+        return self.get('/hello', data=None)
