@@ -5,7 +5,8 @@ from micro.client import Client
 每个 service 应该都要通过 TDD 来写
 这样就可以满足 sdk 的要求
 
-同时我们也可以给用户生成对应的client
+1. 同时我们也可以给用户生成对应的client
+2. 也可以作为 sidecar 来提供微服务的帮助。
 """
 
 # Client
